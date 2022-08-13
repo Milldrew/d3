@@ -15,7 +15,6 @@ export class BasicDotComponent {
     this.selectedElement = d3.select(containerEle);
     this.createDot();
   }
-
   prepareAttr(dataIndex: any) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
       return data[dataIndex];
