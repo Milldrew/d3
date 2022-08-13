@@ -4,6 +4,7 @@ import { Component, ElementRef } from '@angular/core';
 @Component({
   selector: 'div[basic-dot]',
   templateUrl: './basic-dot.component.html',
+
   styleUrls: ['./basic-dot.component.scss'],
 })
 export class BasicDotComponent {
@@ -15,17 +16,28 @@ export class BasicDotComponent {
     this.createDot();
   }
 
-  createDot() {
+  prepareAttr(dataIndex: any) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
-      return data[0];
+      return data[dataIndex];
     };
-
+    return setAttr;
+  }
+  createDot() {
     this.selectedElement
       .append('svg')
       .append('circle')
       .datum(this.mockDataOne)
-      .attr('cy', setAttr)
-      .attr('cx', setAttr)
-      .attr('r', setAttr);
+      .attr('cy', this.prepareAttr(0))
+      .attr('cx', this.prepareAttr(0))
+      .attr('r', this.prepareAttr(0));
+  }
+
+  dotGrow() {
+    this.selectedElement
+      .transition()
+      .duration(4000)
+      .attr('cy', this.prepareAttr(1))
+      .attr('cx', this.prepareAttr(1))
+      .attr('r', this.prepareAttr(1));
   }
 }
