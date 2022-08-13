@@ -14,8 +14,9 @@ export class BasicDotComponent {
     const containerEle: HTMLElement = this.eleRef.nativeElement;
     this.selectedElement = d3.select(containerEle);
     this.createDot();
+    this.dotGrow();
   }
-  prepareAttr(dataIndex: any) {
+  prepareAttr(dataIndex: number) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
       return data[dataIndex];
     };
@@ -33,6 +34,8 @@ export class BasicDotComponent {
 
   dotGrow() {
     this.selectedElement
+      .select('circle')
+      .datum(this.mockDataOne)
       .transition()
       .duration(4000)
       .attr('cy', this.prepareAttr(1))
