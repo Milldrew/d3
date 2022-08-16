@@ -28,8 +28,8 @@ export class BasicDotComponent {
     this.handleCircleColor();
   }
   handleCircleColor() {
-    this.circleElement.attr('fill', () => 'orange');
-    this.circleElement.attr('stroke', () => 'black');
+    this.circleElement.attr('fill', () => '#afa');
+    this.circleElement.attr('stroke', () => '#3d3');
   }
   handleSvgSize() {
     this.svgElement
