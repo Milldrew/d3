@@ -8,7 +8,7 @@ import { Component, ElementRef } from '@angular/core';
   styleUrls: ['./basic-dot.component.scss'],
 })
 export class BasicDotComponent {
-  mockDataOne = [30, 2, 3];
+  mockDataOne = [30, 2, 100];
   selectedElement: d3.Selection<HTMLElement, any, any, any>;
   constructor(private eleRef: ElementRef) {
     const containerEle: HTMLElement = this.eleRef.nativeElement;
@@ -32,14 +32,14 @@ export class BasicDotComponent {
       .attr('r', this.prepareAttr(0));
   }
 
-  dotGrow() {
+  dotGrow(sizeIndex: number) {
     this.selectedElement
       .select('circle')
       .datum(this.mockDataOne)
       .transition()
       .duration(4000)
-      .attr('cy', this.prepareAttr(1))
-      .attr('cx', this.prepareAttr(1))
-      .attr('r', this.prepareAttr(1));
+      .attr('cy', this.prepareAttr(sizeIndex))
+      .attr('cx', this.prepareAttr(sizeIndex))
+      .attr('r', this.prepareAttr(sizeIndex));
   }
 }
