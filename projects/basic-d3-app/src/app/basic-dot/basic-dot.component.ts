@@ -11,7 +11,7 @@ export class BasicDotComponent {
   circleElement: d3.Selection<HTMLElement, any, any, any>;
   svgElement: d3.Selection<HTMLElement, any, any, any>;
   duration = 1000;
-  mockDataOne = [30, 2, 100, 200];
+  mockDataOne = [30, 2, 100, 200, 1, 500];
   selectedElement: d3.Selection<HTMLElement, any, any, any>;
   constructor(private eleRef: ElementRef) {
     const containerEle: HTMLElement = this.eleRef.nativeElement;
@@ -21,6 +21,8 @@ export class BasicDotComponent {
       await this.dotGrow(1).end();
       await this.dotGrow(2).end();
       await this.dotGrow(3).end();
+      await this.dotGrow(4).end();
+      await this.dotGrow(5).end();
     })();
     this.svgElement = d3.select('svg');
     this.circleElement = d3.select('circle');
@@ -34,7 +36,8 @@ export class BasicDotComponent {
   handleSvgSize() {
     this.svgElement
       .attr('width', () => '1000px')
-      .attr('height', () => '1000px');
+      .attr('height', () => '1000px')
+      .attr('viewBox', () => '-300 -300 1000 1000');
   }
   prepareAttr(dataIndex: number) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
