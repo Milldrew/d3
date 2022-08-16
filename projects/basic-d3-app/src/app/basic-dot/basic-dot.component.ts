@@ -11,7 +11,7 @@ export class BasicDotComponent {
   circleElement: d3.Selection<HTMLElement, any, any, any>;
   svgElement: d3.Selection<HTMLElement, any, any, any>;
   duration = 1000;
-  mockDataOne = [30, 2, 100, 200, 1, 500;
+  mockDataOne = [30, 2, 100, 200, 1, 500];
   selectedElement: d3.Selection<HTMLElement, any, any, any>;
   constructor(private eleRef: ElementRef) {
     const containerEle: HTMLElement = this.eleRef.nativeElement;
@@ -37,7 +37,7 @@ export class BasicDotComponent {
     this.svgElement
       .attr('width', () => '1000px')
       .attr('height', () => '1000px')
-      .attr('viewBox', () => '-300 -300 1000 1000');
+      .attr('viewBox', () => '0 0 1000 1000');
   }
   prepareAttr(dataIndex: number) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
