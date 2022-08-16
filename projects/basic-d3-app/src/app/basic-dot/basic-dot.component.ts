@@ -8,6 +8,8 @@ import { Component, ElementRef } from '@angular/core';
   styleUrls: ['./basic-dot.component.scss'],
 })
 export class BasicDotComponent {
+  circleElement: d3.Selection<HTMLElement, any, any, any>;
+  svgElement: d3.Selection<HTMLElement, any, any, any>;
   duration = 1000;
   mockDataOne = [30, 2, 100, 200];
   selectedElement: d3.Selection<HTMLElement, any, any, any>;
@@ -20,6 +22,19 @@ export class BasicDotComponent {
       await this.dotGrow(2).end();
       await this.dotGrow(3).end();
     })();
+    this.svgElement = d3.select('svg');
+    this.circleElement = d3.select('circle');
+    this.handleSvgSize();
+    this.handleCircleColor();
+  }
+  handleCircleColor() {
+    this.circleElement.attr('fill', () => 'orange');
+    this.circleElement.attr('stroke', () => 'black');
+  }
+  handleSvgSize() {
+    this.svgElement
+      .attr('width', () => '1000px')
+      .attr('height', () => '1000px');
   }
   prepareAttr(dataIndex: number) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
