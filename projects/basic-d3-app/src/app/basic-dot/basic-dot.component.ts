@@ -8,6 +8,7 @@ import { Component, ElementRef } from '@angular/core';
   styleUrls: ['./basic-dot.component.scss'],
 })
 export class BasicDotComponent {
+  duration = 1000;
   mockDataOne = [30, 2, 100, 200];
   selectedElement: d3.Selection<HTMLElement, any, any, any>;
   constructor(private eleRef: ElementRef) {
@@ -41,7 +42,7 @@ export class BasicDotComponent {
       .select('circle')
       .datum(this.mockDataOne)
       .transition()
-      .duration(4000)
+      .duration(this.duration)
       .attr('cy', this.prepareAttr(sizeIndex))
       .attr('cx', this.prepareAttr(sizeIndex))
       .attr('r', this.prepareAttr(sizeIndex));
