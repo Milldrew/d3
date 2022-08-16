@@ -11,7 +11,7 @@ export class BasicDotComponent {
   circleElement: d3.Selection<HTMLElement, any, any, any>;
   svgElement: d3.Selection<HTMLElement, any, any, any>;
   duration = 1000;
-  mockDataOne = [30, 2, 100, 200, 1, 500];
+  mockDataOne = [30, 2, 100, 200, 1, 500;
   selectedElement: d3.Selection<HTMLElement, any, any, any>;
   constructor(private eleRef: ElementRef) {
     const containerEle: HTMLElement = this.eleRef.nativeElement;
