@@ -9,15 +9,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 
-/**
- * @Description This is a Component class that selects any element with the directive basic-dot in it's element tag the lement that is selected will be used as a container for a d3 chart. The chart grows and shrinks as  a result of the value of the data that is passed into it and the assigned timeInterval in ms.
- * @Input timeInterval
- * @Input nameOfFigure: string;
- * @Input data: Object[] | SimpleChange;
- * @Input intervalInMs: number | SimpleChange;
- *
- *
- */
 @Component({
   selector: 'div[basic-dot]',
   templateUrl: './basic-dot.component.html',
@@ -114,6 +105,10 @@ export class BasicDotComponent implements OnChanges, OnInit {
       .style('font-family', 'sans-serif');
   }
 
+  /**
+   *@description this function handles the animations it uses the mock data to change the size of the dot
+   *
+   */
   dotGrow(sizeIndex: number) {
     if (typeof this.intervalInMs === 'number') {
       return this.selectedElement
@@ -124,6 +119,11 @@ export class BasicDotComponent implements OnChanges, OnInit {
         .attr('r', this.prepareAttr(sizeIndex));
     }
   }
+
+  /**
+   *@description this function handles the animations it uses the mock data to change the size of the dot
+   *
+   */
   addChartTitle() {
     const h2Element = d3.select('h2');
     h2Element.text(this.nameOfFigure || 'NO NAME FOUND');
