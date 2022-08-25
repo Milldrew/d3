@@ -36,8 +36,10 @@ export class BasicDotComponent implements OnChanges, OnInit {
     this.nameOfFigure = changes['nameOfFigure'].currentValue;
   }
   ngAfterContentInit() {
+    this.styleSvg();
     this.addChartTitle();
   }
+
   circleElement: d3.Selection<HTMLElement, any, any, any>;
   svgElement: d3.Selection<HTMLElement, any, any, any>;
   mockDataOne = [30, 2, 100, 200, 1, 500];
@@ -61,36 +63,55 @@ export class BasicDotComponent implements OnChanges, OnInit {
     this.handleSvgSize();
     this.handleCircleColor();
   }
+  /**
+   *@description This function sets the background color using the fill attribute. This function sets the text color using the stroke attribute
+   *
+   *
+   */
   handleCircleColor() {
     this.circleElement.attr('fill', () => '#afa');
     this.circleElement.attr('stroke', () => '#3d3');
   }
+  /**
+   *@description This function sets the size of the svg element inside of the containing element.
+   *
+   *
+   */
   handleSvgSize() {
-    this.svgElement
-      .attr('width', () => '1000px')
-      .attr('height', () => '1000px')
-      .attr('viewBox', () => '0 0 1000 1000');
+    this.svgElement.attr('viewBox', () => '0 0 1000 1000');
   }
+  /**
+   *@description this function takes the data value out of the data and adds it to the attribute, it is a callback function
+   *@todo this funciton needs to be renamed.
+   */
   prepareAttr(dataIndex: number) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
       return data[dataIndex];
     };
     return setAttr;
   }
+  /**
+   *@description this function creates the circle and sets all of the size and position attr
+   *@todo this funciton needs to be renamed.
+   */
   createDot() {
     this.selectedElement
       .append('svg')
       .append('circle')
       .datum(this.mockDataOne)
-      .attr('cy', this.prepareAttr(0))
-      .attr('cx', this.prepareAttr(0))
+      .attr('cy', 500)
+      .attr('cx', 500)
       .attr('r', this.prepareAttr(0));
   }
+  /**
+   *@description This function handles the title of the chart.
+   *
+   */
   setupH2Element() {
     this.selectedElement
       .append('h2')
-      .style('background-color', 'orange')
-      .style('text-align', 'center');
+      .style('text-align', 'center')
+      .style('font-family', 'sans-serif');
   }
 
   dotGrow(sizeIndex: number) {
@@ -100,13 +121,16 @@ export class BasicDotComponent implements OnChanges, OnInit {
         .datum(this.mockDataOne)
         .transition()
         .duration(this.intervalInMs)
-        .attr('cy', this.prepareAttr(sizeIndex))
-        .attr('cx', this.prepareAttr(sizeIndex))
         .attr('r', this.prepareAttr(sizeIndex));
     }
   }
   addChartTitle() {
     const h2Element = d3.select('h2');
     h2Element.text(this.nameOfFigure || 'NO NAME FOUND');
+  }
+
+  styleSvg() {
+    console.log('hello form style svg');
+    this.selectedElement.select('svg').attr('fill', '#adadad');
   }
 }
