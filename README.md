@@ -3,7 +3,7 @@ A workspace for d3 components to be packaged into libraries.
 1. Dot
    <ul>
    <li>
-   input: { sizeValue: value, timeInMiliseconds: value } []
+   input: { sizeValue: value} []
    </li>
    <li>
    input name of figure
