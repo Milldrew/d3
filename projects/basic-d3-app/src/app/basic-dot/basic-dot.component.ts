@@ -17,15 +17,18 @@ import {
 })
 export class BasicDotComponent implements OnChanges, OnInit {
   @Input()
-  nameOfFigure: string | SimpleChange;
+  nameOfFigure: string;
   @Input()
   data: Object[] | SimpleChange;
   @Input()
   intervalInMs: number | SimpleChange;
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.nameOfFigure = changes['nameOfFigure'];
-    console.log(this.nameOfFigure.currentValue);
+    this.nameOfFigure = changes['nameOfFigure'].currentValue;
+    //console.log(this.nameOfFigure.currentValue);
+  }
+  ngAfterContentInit() {
+    this.addChartTitle();
   }
   circleElement: d3.Selection<HTMLElement, any, any, any>;
   svgElement: d3.Selection<HTMLElement, any, any, any>;
@@ -66,6 +69,7 @@ export class BasicDotComponent implements OnChanges, OnInit {
     return setAttr;
   }
   createDot() {
+    this.selectedElement.append('h2');
     this.selectedElement
       .append('svg')
       .append('circle')
@@ -86,5 +90,12 @@ export class BasicDotComponent implements OnChanges, OnInit {
         .attr('cx', this.prepareAttr(sizeIndex))
         .attr('r', this.prepareAttr(sizeIndex));
     }
+  }
+  addChartTitle() {
+    console.log('NAME OF FIGURE', this.nameOfFigure);
+    console.log('hello from add chart title');
+    const h2Element = d3.select('h2');
+    console.log(h2Element, 'H2 ELEMENT');
+    h2Element.text(this.nameOfFigure || 'NO NAME FOUND');
   }
 }
