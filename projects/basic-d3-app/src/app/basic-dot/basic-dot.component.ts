@@ -57,10 +57,7 @@ export class BasicDotComponent implements OnChanges, OnInit {
     this.circleElement.attr('stroke', () => '#3d3');
   }
   handleSvgSize() {
-    this.svgElement
-      .attr('width', () => '1000px')
-      .attr('height', () => '1000px')
-      .attr('viewBox', () => '0 0 1000 1000');
+    this.svgElement.attr('viewBox', () => '0 0 1000 1000');
   }
   prepareAttr(dataIndex: number) {
     const setAttr: d3.ValueFn<any, any, any> = (data, index, element) => {
@@ -73,8 +70,8 @@ export class BasicDotComponent implements OnChanges, OnInit {
       .append('svg')
       .append('circle')
       .datum(this.mockDataOne)
-      .attr('cy', this.prepareAttr(0))
-      .attr('cx', this.prepareAttr(0))
+      .attr('cy', 500)
+      .attr('cx', 500)
       .attr('r', this.prepareAttr(0));
   }
   setupH2Element() {
