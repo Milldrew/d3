@@ -12,12 +12,9 @@ import {
 /**
  * @Description This is a Component class that selects any element with the directive basic-dot in it's element tag the lement that is selected will be used as a container for a d3 chart. The chart grows and shrinks as  a result of the value of the data that is passed into it and the assigned timeInterval in ms.
  * @Input timeInterval
- * @Input()
- * nameOfFigure: string;
- * @Input()
- * data: Object[] | SimpleChange;
- * @Input()
- * intervalInMs: number | SimpleChange;
+ * @Input nameOfFigure: string;
+ * @Input data: Object[] | SimpleChange;
+ * @Input intervalInMs: number | SimpleChange;
  *
  *
  */
