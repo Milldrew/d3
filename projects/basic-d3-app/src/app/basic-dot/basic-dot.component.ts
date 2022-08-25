@@ -25,7 +25,6 @@ export class BasicDotComponent implements OnChanges, OnInit {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.nameOfFigure = changes['nameOfFigure'].currentValue;
-    //console.log(this.nameOfFigure.currentValue);
   }
   ngAfterContentInit() {
     this.addChartTitle();
@@ -39,6 +38,7 @@ export class BasicDotComponent implements OnChanges, OnInit {
     this.selectedElement = d3.select(containerEle);
   }
   ngOnInit(): void {
+    this.setupH2Element();
     this.createDot();
     (async () => {
       await this.dotGrow(1)?.end();
@@ -69,7 +69,6 @@ export class BasicDotComponent implements OnChanges, OnInit {
     return setAttr;
   }
   createDot() {
-    this.selectedElement.append('h2');
     this.selectedElement
       .append('svg')
       .append('circle')
@@ -77,6 +76,12 @@ export class BasicDotComponent implements OnChanges, OnInit {
       .attr('cy', this.prepareAttr(0))
       .attr('cx', this.prepareAttr(0))
       .attr('r', this.prepareAttr(0));
+  }
+  setupH2Element() {
+    this.selectedElement
+      .append('h2')
+      .style('background-color', 'orange')
+      .style('text-align', 'center');
   }
 
   dotGrow(sizeIndex: number) {
@@ -92,10 +97,7 @@ export class BasicDotComponent implements OnChanges, OnInit {
     }
   }
   addChartTitle() {
-    console.log('NAME OF FIGURE', this.nameOfFigure);
-    console.log('hello from add chart title');
     const h2Element = d3.select('h2');
-    console.log(h2Element, 'H2 ELEMENT');
     h2Element.text(this.nameOfFigure || 'NO NAME FOUND');
   }
 }
