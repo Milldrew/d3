@@ -1,5 +1,12 @@
 import * as d3 from 'd3';
-import { Component, ElementRef } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  SimpleChange,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'div[basic-dot]',
@@ -7,7 +14,18 @@ import { Component, ElementRef } from '@angular/core';
 
   styleUrls: ['./basic-dot.component.scss'],
 })
-export class BasicDotComponent {
+export class BasicDotComponent implements OnChanges {
+  @Input()
+  nameOfFigure: string | SimpleChange;
+  @Input()
+  data: Object[] | SimpleChange;
+  @Input()
+  intervalInMs: number | SimpleChange;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.nameOfFigure = changes['nameOfFigure'];
+    console.log(this.nameOfFigure.currentValue);
+  }
   circleElement: d3.Selection<HTMLElement, any, any, any>;
   svgElement: d3.Selection<HTMLElement, any, any, any>;
   duration = 1000;
