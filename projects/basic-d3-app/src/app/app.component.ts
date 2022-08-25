@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  intervalInMs = 2000;
+  intervalInMs = 4000;
 }
