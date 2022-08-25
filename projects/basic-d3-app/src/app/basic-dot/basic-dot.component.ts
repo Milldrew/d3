@@ -38,11 +38,11 @@ export class BasicDotComponent implements OnChanges, OnInit {
   ngOnInit(): void {
     this.createDot();
     (async () => {
-      await this.dotGrow(1).end();
-      await this.dotGrow(2).end();
-      await this.dotGrow(3).end();
-      await this.dotGrow(4).end();
-      await this.dotGrow(5).end();
+      await this.dotGrow(1)?.end();
+      await this.dotGrow(2)?.end();
+      await this.dotGrow(3)?.end();
+      await this.dotGrow(4)?.end();
+      await this.dotGrow(5)?.end();
     })();
     this.svgElement = d3.select('svg');
     this.circleElement = d3.select('circle');
@@ -76,13 +76,15 @@ export class BasicDotComponent implements OnChanges, OnInit {
   }
 
   dotGrow(sizeIndex: number) {
-    return this.selectedElement
-      .select('circle')
-      .datum(this.mockDataOne)
-      .transition()
-      .duration(1000)
-      .attr('cy', this.prepareAttr(sizeIndex))
-      .attr('cx', this.prepareAttr(sizeIndex))
-      .attr('r', this.prepareAttr(sizeIndex));
+    if (typeof this.intervalInMs === 'number') {
+      return this.selectedElement
+        .select('circle')
+        .datum(this.mockDataOne)
+        .transition()
+        .duration(this.intervalInMs)
+        .attr('cy', this.prepareAttr(sizeIndex))
+        .attr('cx', this.prepareAttr(sizeIndex))
+        .attr('r', this.prepareAttr(sizeIndex));
+    }
   }
 }
