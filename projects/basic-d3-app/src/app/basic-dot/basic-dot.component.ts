@@ -91,8 +91,6 @@ export class BasicDotComponent implements OnChanges, OnInit {
         .datum(this.mockDataOne)
         .transition()
         .duration(this.intervalInMs)
-        .attr('cy', this.prepareAttr(sizeIndex))
-        .attr('cx', this.prepareAttr(sizeIndex))
         .attr('r', this.prepareAttr(sizeIndex));
     }
   }
