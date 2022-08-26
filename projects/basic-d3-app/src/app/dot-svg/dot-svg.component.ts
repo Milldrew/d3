@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import * as d3 from 'd3';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'basic-dot-svg',
+  selector: 'div[basic-svg]',
   templateUrl: './dot-svg.component.html',
-  styleUrls: ['./dot-svg.component.scss']
+  styleUrls: ['./dot-svg.component.scss'],
 })
-export class DotSvgComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class DotSvgComponent {
+  selectedElement: d3.Selection<HTMLElement, any, any, any>;
+  constructor(private eleRef: ElementRef) {
+    const containerEle: HTMLElement = this.eleRef.nativeElement;
+    this.selectedElement = d3.select(containerEle);
   }
-
 }
