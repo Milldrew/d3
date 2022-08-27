@@ -11,13 +11,12 @@ export class BasicSvgComponent {
   parentMostElement: d3.Selection<HTMLElement, any, any, any>;
   svgElement: d3.Selection<SVGSVGElement, any, any, any>;
 
-  count = 0;
+  viewCount = 0;
   constructor(private eleRef: ElementRef) {
     const containerEle: HTMLElement = this.eleRef.nativeElement;
     this.parentMostElement = d3.select(containerEle);
     this.addSvgElement();
     this.addViewBoxToSvg();
-    this.appendViewViewBox('0', '0', '0', '0');
   }
 
   addSvgElement() {
@@ -30,14 +29,16 @@ export class BasicSvgComponent {
   }
 
   /**
-   *@Action1 -  This method appends a view its name to its respective number appended with the word view for example the first views id will be one-view, the second views id will be two-view.
+   *@Action1 -  This method appends a view its name to its respective number appended with the word view for example the first views id will be 1-view, the second views id will be 2-view.
    *@Action2 - This method will then dynamically set the view box using arguments that are passed in.
    *@description - The viewbox attributes respectively: min-x min-y width height
-   *
-   *
    */
-  appendViewViewBox(minX: string, minY: string, width: string, height: string) {
-    this.count += 1;
+  appendView(minX: string, minY: string, width: string, height: string) {
+    this.viewCount += 1;
+    this.svgElement
+      .append('view')
+      .attr('viewBox', () => `${minX} ${minY} ${width} ${height}`)
+      .attr('id', `${this.viewCount}-view`);
   }
 
   ngOnChanges() {}
