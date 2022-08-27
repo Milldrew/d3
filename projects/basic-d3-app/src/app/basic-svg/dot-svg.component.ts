@@ -16,7 +16,6 @@ export class BasicSvgComponent {
     const containerEle: HTMLElement = this.eleRef.nativeElement;
     this.parentMostElement = d3.select(containerEle);
     this.addSvgElement();
-    this.addViewBoxToSvg();
   }
 
   addSvgElement() {
