@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BasicDotComponent } from './basic-dot/basic-dot.component';
-import { DotSvgComponent } from './dot-svg/dot-svg.component';
+import { BasicSvgComponent } from './dot-svg/dot-svg.component';
 
 @NgModule({
-  declarations: [AppComponent, BasicDotComponent, DotSvgComponent],
+  declarations: [AppComponent, BasicDotComponent, BasicSvgComponent],
   imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],

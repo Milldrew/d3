@@ -7,7 +7,7 @@ import { BasicDotComponent } from '../basic-dot/basic-dot.component';
   templateUrl: './dot-svg.component.html',
   styleUrls: ['./dot-svg.component.scss'],
 })
-export class DotSvgComponent extends BasicDotComponent {
+export class BasicSvgComponent extends BasicDotComponent {
   /*
   selectedElement: d3.Selection<HTMLElement, any, any, any>;
   constructor(private eleRef: ElementRef) {
