@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DotSvgComponent } from './dot-svg.component';
+import { BasicSvgComponent } from './dot-svg.component';
 
 describe('DotSvgComponent', () => {
-  let component: DotSvgComponent;
-  let fixture: ComponentFixture<DotSvgComponent>;
+  let component: BasicSvgComponent;
+  let fixture: ComponentFixture<BasicSvgComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DotSvgComponent ]
-    })
-    .compileComponents();
+      declarations: [BasicSvgComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(DotSvgComponent);
+    fixture = TestBed.createComponent(BasicSvgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
